@@ -1,0 +1,57 @@
+{
+    "home_page": {
+        "hello": "नमस्ते",
+        "d": "डी",
+        "type_to_translate": "अनुवाद के लिए टाइप करें",
+        "home": "मुख्य पृष्ठ",
+        "learning": "सीखना",
+        "practice": "अभ्यास",
+        "sign": "साइन"
+    },
+    "drawer": {
+        "home": "मुख्य पृष्ठ",
+        "faqs": "सामान्य प्रश्न",
+        "profile": "प्रोफाइल",
+        "logout": "लॉगआउट",
+        "settings": "सेटिंग्स"
+    },
+    "logout_page": {
+        "are_you_sure_logout": "क्या आप वास्तव में लॉगआउट करना चाहते हैं?",
+        "logout": "लॉगआउट"
+    },
+    "profile_page": {
+        "profile": "प्रोफाइल",
+        "name": "नाम: अभिजीत",
+        "email": "ईमेल",
+        "points": "अंक",
+        "streaks": "स्ट्रिक्स",
+        "signs": "साइन"
+    },
+    "learning_page": {
+        "header": "यहाँ नई चीजें सीखें",
+        "greetings": "नमस्ते",
+        "alphabets": "अक्षरमाला",
+        "numbers": "संख्याएँ",
+        "colors": "रंग",
+        "emotions": "भावनाएँ",
+        "shapes": "आकृतियाँ",
+        "animals": "पशु",
+        "food": "खाना",
+        "transportation": "परिवहन",
+        "body parts": "शरीर के अंग"
+    },
+    "learning_page_by_categories": {
+        "learn_about_alphabets": "अक्षरमाला के बारे में जानें",
+        "learn_about_greetings": "नमस्ते के बारे में जानें",
+        "learn_about_numbers": "संख्याओं के बारे में जानें",
+        "learn_about_colors": "रंगों के बारे में जानें",
+        "learn_about_emotions": "भावनाओं के बारे में जानें",
+        "learn_about_shapes": "आकृतियों के बारे में जानें",
+        "learn_about_animals": "पशुओं के बारे में जानें",
+        "learn_about_food": "खाने के बारे में जानें",
+        "learn_about_transportation": "परिवहन के बारे में जानें",
+        "learn_about_body_parts": "शरीर के अंगों के बारे में जानें",
+        "previous_sign": "पिछला साइन",
+        "next_sign": "अगला साइन"
+    }
+}

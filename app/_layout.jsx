@@ -9,6 +9,8 @@ import { login, logout, setUserData } from '../features/auth/authSlice'
 import persistStore from 'redux-persist/es/persistStore'
 import { PersistGate } from 'redux-persist/integration/react'
 import { getUserData } from '../services/getUserData'
+import { I18nextProvider } from 'react-i18next'
+import i18n from '../utils/i18n'
 
 const _layout = () => {
   const persistor = persistStore(store)
@@ -16,7 +18,9 @@ const _layout = () => {
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <StatusBar style='dark' />
-        <MainLayout />
+        <I18nextProvider i18n={i18n}>
+          <MainLayout />
+        </I18nextProvider>
       </PersistGate>
     </Provider>
   )
@@ -31,7 +35,6 @@ const MainLayout = () => {
         // Dispatch login action with session user
         dispatch(login(session.user));
 
-        // Fetch additional user data and update userData in the store
         const data = await getUserData(session.user.id);
         if (data) {
           dispatch(setUserData(data));

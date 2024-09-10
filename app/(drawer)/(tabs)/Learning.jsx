@@ -9,12 +9,22 @@ import { Image } from 'expo-image';
 
 import { Pressable } from 'react-native';
 import { useRouter } from 'expo-router';
+import { t } from 'i18next';
+/**
+ * Leaning component
+ *
+ * This component renders a list of learning categories, with each category
+ * represented as a pressable item that navigates to the corresponding
+ * tutorial page when pressed.
+ *
+ * @returns {React.ReactElement} The Leaning component
+ */
 const Leaning = () => {
   const router = useRouter()
   return (
     <ScreenWrapper>
       <ScrollView>
-        <Text style={styles.headerText}>Learning new Things here</Text>
+        <Text style={styles.headerText}>{t('learning_page.header')}</Text>
         <View style={styles.container}>
           {Categories.leaningCategories.map((item, index) => (
             <Pressable onPress={() => router.push(`/tutorials/${item.name}`)} key={index}>
@@ -24,7 +34,7 @@ const Leaning = () => {
                   source={item.imageUrl}
                   contentFit="cover"
                 />
-                <Text style={styles.itemText}>{item.name}</Text>
+                <Text style={styles.itemText}>{t(`learning_page.${item.name.toLowerCase()}`)}</Text>
               </View>
             </Pressable>
           ))}

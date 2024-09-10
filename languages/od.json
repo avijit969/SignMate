@@ -1,0 +1,57 @@
+{
+    "home_page": {
+        "hello": "ନମସ୍କାର",
+        "d": "ଡି",
+        "type_to_translate": "ଅନୁବାଦ ପାଇଁ ଟାଇପ କରନ୍ତୁ",
+        "home": "ହୋମ୍",
+        "learning": "ଶିକ୍ଷା",
+        "practice": "ଅଭ୍ୟାସ",
+        "sign": "ସାଇନ୍"
+    },
+    "drawer": {
+        "home": "ହୋମ୍",
+        "faqs": "ସାଧାରଣ ପ୍ରଶ୍ନ",
+        "profile": "ପ୍ରୋଫାଇଲ୍",
+        "logout": "ଲଗ୍ ଆଉଟ୍",
+        "settings": "ସେଟିଙ୍ଗ୍ସ"
+    },
+    "logout_page": {
+        "are_you_sure_logout": "ଆପଣ ନିଶ୍ଚିତ ଭାବେ ଲଗ୍ ଆଉଟ୍ କରିବେ କି?",
+        "logout": "ଲଗ୍ ଆଉଟ୍"
+    },
+    "profile_page": {
+        "profile": "ପ୍ରୋଫାଇଲ୍",
+        "name": "ନାମ: ଅଭିଜିତ୍",
+        "email": "ଇମେଲ୍",
+        "points": "ପଏଣ୍ଟସ୍",
+        "streaks": "ଷ୍ଟ୍ରିକ୍ସ",
+        "signs": "ସାଇନ୍"
+    },
+    "learning_page": {
+        "header": "ଏଠାରେ ନୂତନ ଜାଣନ୍ତୁ",
+        "greetings": "ସ୍ନେହର ସୂଚନା",
+        "alphabets": "ବାକ୍ୟମାଳା",
+        "numbers": "ଅଙ୍କ",
+        "colors": "ରଙ୍ଗ",
+        "emotions": "ଭାବନା",
+        "shapes": "ଆକୃତି",
+        "animals": "ପଶୁ",
+        "food": "ଖାଦ୍ୟ",
+        "transportation": "ପରିବହନ",
+        "body parts": "ଶରୀର ଅଙ୍ଗ"
+    },
+    "learning_page_by_categories": {
+        "learn_about_alphabets": "ବାକ୍ୟମାଳା ବିଷୟରେ ଶିକ୍ଷା",
+        "learn_about_greetings": "ସ୍ନେହର ସୂଚନା ବିଷୟରେ ଶିକ୍ଷା",
+        "learn_about_numbers": "ଅଙ୍କ ବିଷୟରେ ଶିକ୍ଷା",
+        "learn_about_colors": "ରଙ୍ଗ ବିଷୟରେ ଶିକ୍ଷା",
+        "learn_about_emotions": "ଭାବନା ବିଷୟରେ ଶିକ୍ଷା",
+        "learn_about_shapes": "ଆକୃତି ବିଷୟରେ ଶିକ୍ଷା",
+        "learn_about_animals": "ପଶୁ ବିଷୟରେ ଶିକ୍ଷା",
+        "learn_about_food": "ଖାଦ୍ୟ ବିଷୟରେ ଶିକ୍ଷା",
+        "learn_about_transportation": "ପରିବହନ ବିଷୟରେ ଶିକ୍ଷା",
+        "learn_about_body_parts": "ଶରୀର ଅଙ୍ଗ ବିଷୟରେ ଶିକ୍ଷା",
+        "previous_sign": "ପୂର୍ବବର୍ତୀ ସାଇନ୍",
+        "next_sign": "ପରବର୍ତୀ ସାଇନ୍"
+    }
+}

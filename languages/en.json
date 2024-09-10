@@ -1,0 +1,57 @@
+{
+    "home_page": {
+        "hello": "Hello",
+        "d": "D",
+        "type_to_translate": "Type to translate",
+        "home": "Home",
+        "learning": "Learning",
+        "practice": "Practice",
+        "sign": "Sign"
+    },
+    "drawer": {
+        "home": "Home",
+        "faqs": "FAQs",
+        "profile": "Profile",
+        "logout": "Logout",
+        "settings": "Settings"
+    },
+    "logout_page": {
+        "are_you_sure_logout": "Are you sure you want to logout?",
+        "logout": "Logout"
+    },
+    "profile_page": {
+        "profile": "Profile",
+        "name": "Name: Abhijit",
+        "email": "Email",
+        "points": "Points",
+        "streaks": "Streaks",
+        "signs": "Signs"
+    },
+    "learning_page": {
+        "header": "Learning new things here",
+        "greetings": "Greetings",
+        "alphabets": "Alphabets",
+        "numbers": "Numbers",
+        "colors": "Colors",
+        "emotions": "Emotions",
+        "shapes": "Shapes",
+        "animals": "Animals",
+        "food": "Food",
+        "transportation": "Transportation",
+        "body parts": "Body parts"
+    },
+    "learning_page_by_categories": {
+        "learn_about_alphabets": "Learn about alphabets",
+        "learn_about_greetings": "Learn about greetings",
+        "learn_about_numbers": "Learn about numbers",
+        "learn_about_colors": "Learn about colors",
+        "learn_about_emotions": "Learn about emotions",
+        "learn_about_shapes": "Learn about shapes",
+        "learn_about_animals": "Learn about animals",
+        "learn_about_food": "Learn about food",
+        "learn_about_transportation": "Learn about transportation",
+        "learn_about_body_parts": "Learn about body parts",
+        "previous_sign": "Previous sign",
+        "next_sign": "Next sign"
+    }
+}

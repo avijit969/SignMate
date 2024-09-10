@@ -12,8 +12,23 @@ import CustomAlert from '../../../components/Alert';
 import { Video } from 'expo-av';
 import { StatusBar } from 'expo-status-bar';
 import { theme } from '../../../constants/theme';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import { decreaseFontSize, increaseFontSize } from '../../../features/font/fontSlice';
 
+/**
+ * Home Screen
+ * 
+ * This screen renders the home screen with a video player and text input to translate signs.
+ * It fetches the video data from the database and sets the video url state accordingly.
+ * If the video is not available it shows a message.
+ * The user can type in the input and press the translate button to fetch the video.
+ * The video is looped and muted.
+ * The screen also renders a logout button.
+ * If the user is not logged in it shows an alert.
+ * The screen also renders a label below the video with the translated text.
+ * @return {JSX.Element} The home screen component.
+ */
 
 export default function Home() {
   // const [OrbitControls] = useControls();
@@ -26,7 +41,10 @@ export default function Home() {
   const [alertVisible, setAlertVisible] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
   const userData = useSelector((state) => state.auth.userData)
-
+  const { t, i18n } = useTranslation();
+  const dispatch = useDispatch();
+  const fontSize = useSelector((state) => state.fontSize.font_size);
+  const isDefault = useSelector((state) => state.fontSize.isDefault);
   const handleLogout = async () => {
     const { error } = await supabase.auth.signOut();
     if (error) {
@@ -65,10 +83,8 @@ export default function Home() {
   return (
     <ScreenWrapper>
       <View style={styles.container}>
-        {/* Uncomment the button below to add a logout button */}
-        {/* <Button buttonStyle={{ backgroundColor: 'red' }} title='Logout' onPress={handleLogout} /> */}
         <View>
-          <Text style={styles.introText}>Hello {userData?.name} 👋 </Text>
+          <Text style={[styles.introText, isDefault && { fontSize }]}>{t('home_page.hello')} {userData?.name} 👋 </Text>
         </View>
         <StatusBar style='dark' />
         {load3d && (
@@ -94,21 +110,21 @@ export default function Home() {
               isMuted={true}
             />
           ) : (
-            <Text style={styles.noVideoText}>Sign is not available for this word🥹</Text>
+            <Text style={[styles.noVideoText, isDefault && { fontSize }]}>Sign is not available for this word🥹</Text>
           )}
         </View>
 
         {/* label below the video for the input text */}
         {inputValue &&
           <View style={styles.labelBackground}>
-            <Text style={styles.subtitleBelow}>{inputValue}</Text>
+            <Text style={[styles.subtitleBelow, isDefault && { fontSize }]}>{inputValue}</Text>
           </View>
         }
 
         <View style={styles.footer}>
           <View style={styles.inputContainer}>
             <TextInput
-              style={styles.input}
+              style={[styles.input, isDefault && { fontSize }]}
               placeholder='Type To Translate'
               placeholderTextColor="#242723"
               value={inputValue}

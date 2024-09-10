@@ -6,6 +6,15 @@ import { Video } from 'expo-av';
 import { theme } from '../../../constants/theme';
 import Button from '../../../components/Button';
 import { wp } from '../../../helpers/common';
+/**
+ * Practice component for the practice tab in the drawer.
+ *
+ * This component fetches questions from the Supabase database and displays them one by one.
+ * The user can select an answer and check if it is correct or not.
+ * The user can also navigate to the next question or previous question.
+ *
+ * @returns {React.ReactElement}
+ */
 const Practice = () => {
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -19,10 +28,10 @@ const Practice = () => {
 
   useEffect(() => {
     const fetchQuestions = async () => {
-      setLoading(true);
-      setError(null);
-
       try {
+        setLoading(true);
+        setError(null);
+
         const { data, error } = await supabase
           .from('practice')
           .select('*');
@@ -44,11 +53,17 @@ const Practice = () => {
   }, []);
 
   const handleOptionPress = (selectedIndex) => {
+    if (!questions.length) {
+      return;
+    }
     setSelectedOption(selectedIndex);
     setShowCheckButton(true);
   };
 
   const handleCheckAnswer = () => {
+    if (!questions.length) {
+      return;
+    }
     const correctAnswerIndex = questions[currentQuestionIndex].correct_answer_option;
     const isCorrect = selectedOption === correctAnswerIndex;
     setCorrect(isCorrect);
@@ -60,6 +75,9 @@ const Practice = () => {
   };
 
   const handleNextQuestion = () => {
+    if (!questions.length) {
+      return;
+    }
     setSelectedOption(null);
     setCorrect(null);
     setShowNextButton(false);
@@ -67,12 +85,13 @@ const Practice = () => {
   };
 
   const handlePreviousQuestion = () => {
-    if (currentQuestionIndex > 0) {
-      setSelectedOption(null);
-      setCorrect(null);
-      setShowNextButton(false);
-      setCurrentQuestionIndex((prevIndex) => prevIndex - 1);
+    if (currentQuestionIndex <= 0 || !questions.length) {
+      return;
     }
+    setSelectedOption(null);
+    setCorrect(null);
+    setShowNextButton(false);
+    setCurrentQuestionIndex((prevIndex) => prevIndex - 1);
   };
 
   return (
@@ -146,9 +165,6 @@ const Practice = () => {
               <View style={styles.scoreContainer}>
                 <Text style={styles.scoreText}>Practice Complete!</Text>
                 <Text style={styles.scoreText}>Your Score is: {score} / {questions.length}</Text>
-                <View>
-
-                </View>
               </View>
             )}
           </>

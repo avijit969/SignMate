@@ -9,6 +9,7 @@ import { supabase } from '@/lib/supabase';
 import Button from '@/components/Button';
 import { hp, wp } from '@/helpers/common';
 import { Image } from 'expo-image';
+import { t } from 'i18next';
 
 const Tutorials = () => {
     const { category } = useLocalSearchParams();
@@ -68,7 +69,7 @@ const Tutorials = () => {
         <ScreenWrapper>
             <View style={styles.header}>
                 <BackButton router={router} />
-                <Text style={styles.headerText}>Learn about {category}</Text>
+                <Text style={styles.headerText}>{t(`learning_page_by_categories.learn_about_${category.toLowerCase()}`)}</Text>
             </View>
 
             {loading && <ActivityIndicator size="large" style={styles.loader} />}
@@ -170,6 +171,7 @@ const styles = StyleSheet.create({
     video: {
         width: '100%',
         height: 250,
+        borderRadius: theme.radius.lg,
     },
     buttonContainer: {
         flexDirection: 'row',

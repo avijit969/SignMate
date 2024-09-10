@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "SignTalk",
-    "slug": "SignTalk",
+    "name": "SignMate",
+    "slug": "SignMate",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.jpg",
@@ -59,7 +59,7 @@
         "origin": false
       },
       "eas": {
-        "projectId": "20effda9-2a21-4549-8cdd-85fdc31c6f13"
+        "projectId": "9dfbfac9-c1cf-4b41-a2e3-170bed5b7372"
       }
     },
     "owner": "abhijit969"

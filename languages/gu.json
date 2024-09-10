@@ -1,0 +1,57 @@
+{
+    "home_page": {
+        "hello": "હેલો",
+        "d": "ડી",
+        "type_to_translate": "અનુવાદ માટે લખો",
+        "home": "હોમ",
+        "learning": "શિક્ષણ",
+        "practice": "અભ્યાસ",
+        "sign": "સાઇન"
+    },
+    "drawer": {
+        "home": "હોમ",
+        "faqs": "સામાન્ય પ્રશ્નો",
+        "profile": "પ્રોફાઇલ",
+        "logout": "લોગઆઉટ",
+        "settings": "સેટિંગ્સ"
+    },
+    "logout_page": {
+        "are_you_sure_logout": "શું તમે ખરેખર લોગઆઉટ કરવા માંગો છો?",
+        "logout": "લોગઆઉટ"
+    },
+    "profile_page": {
+        "profile": "પ્રોફાઇલ",
+        "name": "નામ: અભિજય",
+        "email": "ઇમેઇલ",
+        "points": "અંક",
+        "streaks": "સ્ટ્રીક",
+        "signs": "સાઇન"
+    },
+    "learning_page": {
+        "header": "અહીં નવા વસ્તુઓ શીખો",
+        "greetings": "સુપ્રભાત",
+        "alphabets": "અક્ષરમાળા",
+        "numbers": "આંકડા",
+        "colors": "રંગો",
+        "emotions": "ભાવનાઓ",
+        "shapes": "આકૃતિઓ",
+        "animals": "પ્રાણીઓ",
+        "food": "ખોરાક",
+        "transportation": "પરિવહન",
+        "body parts": "શરીર ભાગો"
+    },
+    "learning_page_by_categories": {
+        "learn_about_alphabets": "અક્ષરમાળા વિશે શીખો",
+        "learn_about_greetings": "સુપ્રભાત વિશે શીખો",
+        "learn_about_numbers": "આંકડા વિશે શીખો",
+        "learn_about_colors": "રંગો વિશે શીખો",
+        "learn_about_emotions": "ભાવનાઓ વિશે શીખો",
+        "learn_about_shapes": "આકૃતિઓ વિશે શીખો",
+        "learn_about_animals": "પ્રાણીઓ વિશે શીખો",
+        "learn_about_food": "ખોરાક વિશે શીખો",
+        "learn_about_transportation": "પરિવહન વિશે શીખો",
+        "learn_about_body_parts": "શરીર ભાગો વિશે શીખો",
+        "previous_sign": "પૂર્વવર્તી સાઇન",
+        "next_sign": "આગળનો સાઇન"
+    }
+}
