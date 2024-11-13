@@ -9,18 +9,15 @@ import { login, logout, setUserData } from '../features/auth/authSlice'
 import persistStore from 'redux-persist/es/persistStore'
 import { PersistGate } from 'redux-persist/integration/react'
 import { getUserData } from '../services/getUserData'
-import { I18nextProvider } from 'react-i18next'
-import i18n from '../utils/i18n'
-
+import '../utils/i18n'
 const _layout = () => {
+
   const persistor = persistStore(store)
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <StatusBar style='dark' />
-        <I18nextProvider i18n={i18n}>
-          <MainLayout />
-        </I18nextProvider>
+        <MainLayout />
       </PersistGate>
     </Provider>
   )

@@ -3,6 +3,7 @@ import authSlice from '../features/auth/authSlice';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
 import fontSlice from '../features/font/fontSlice';
+import themeSlice from '../features/theme/themeSlice';
 
 const persistConfig = {
     key: 'root',
@@ -12,6 +13,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
     auth: authSlice,
     fontSize: fontSlice,
+    theme: themeSlice
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

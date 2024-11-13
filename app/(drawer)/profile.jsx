@@ -5,9 +5,11 @@ import { hp, wp } from '../../helpers/common';
 import { theme } from '../../constants/theme';
 import Icon from '../../assets/icons';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 const Profile = () => {
   const userData = useSelector((state) => state.auth.userData);
+  const { t } = useTranslation();
 
   return (
     <View style={styles.container}>
@@ -24,23 +26,23 @@ const Profile = () => {
           </Pressable>
         </View>
         <View style={styles.userInfo}>
-          <Text style={styles.name}>Name: {userData?.name}</Text>
-          <Text style={styles.name}>Email: {userData?.email}</Text>
+          <Text style={styles.name}>{t('profile_page.name')}: {userData?.name}</Text>
+          <Text style={styles.name}>{t('profile_page.email')}: {userData?.user_metadata?.email}</Text>
         </View>
         <View style={styles.scoresContainer}>
           <View style={styles.scoreItem}>
             <Icon name="star" color={'#58d68d'} />
-            <Text style={styles.scoresItems}>Points</Text>
+            <Text style={styles.scoresItems}>{t('profile_page.points')}</Text>
             <Text style={styles.itemsValue}>{userData?.points}</Text>
           </View>
           <View style={styles.scoreItem}>
             <Icon name="fire" color={'#FF5733'} />
-            <Text style={styles.scoresItems}>Streak</Text>
-            <Text style={styles.itemsValue}>{userData?.streak}</Text>
+            <Text style={styles.scoresItems}>{t('profile_page.streaks')}</Text>
+            <Text style={styles.itemsValue}>{userData?.streaks}</Text>
           </View>
           <View style={styles.scoreItem}>
             <Icon name="sign" color={'#3498db'} />
-            <Text style={styles.scoresItems}>Sign</Text>
+            <Text style={styles.scoresItems}>{t('profile_page.signs')}</Text>
             <Text style={styles.itemsValue}>{userData?.signs}</Text>
           </View>
         </View>

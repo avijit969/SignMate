@@ -9,7 +9,8 @@ import { supabase } from '@/lib/supabase';
 import Button from '@/components/Button';
 import { hp, wp } from '@/helpers/common';
 import { Image } from 'expo-image';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
+
 
 const Tutorials = () => {
     const { category } = useLocalSearchParams();
@@ -20,7 +21,7 @@ const Tutorials = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [isSlowMotion, setIsSlowMotion] = useState(false);
-
+    const { t } = useTranslation()
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
@@ -77,33 +78,35 @@ const Tutorials = () => {
 
             {!loading && !error && currentTutorial && (
                 <View style={styles.content}>
-                    {!currentTutorial.label_image && <Text style={styles.label}>{currentTutorial.label}</Text>}
                     {currentTutorial.label_image && (
                         <Image source={currentTutorial.label_image}
                             style={styles.image}
                             contentFit="cover" />
                     )}
-                    <Video
-                        source={{ uri: currentTutorial.video_url }}
-                        rate={isSlowMotion ? 0.5 : 1.0}
-                        volume={1.0}
-                        isMuted={true}
-                        isLooping={true}
-                        resizeMode="contain"
-                        shouldPlay
-                        style={styles.video}
-                    // useNativeControls
-                    />
+                    {currentTutorial.label_image && <Text style={styles.label}>{currentTutorial.label}</Text>}
+                    <View style={styles.videoContainer}>
+                        <Video
+                            source={{ uri: currentTutorial.video_url }}
+                            rate={isSlowMotion ? 0.5 : 1.0}
+                            volume={1.0}
+                            isMuted={true}
+                            isLooping={true}
+                            resizeMode="cover"
+                            shouldPlay
+                            style={styles.video}
+                        // useNativeControls
+                        />
+                    </View>
                     <View style={styles.buttonContainer}>
                         <Button
                             buttonStyle={styles.previousButtonStyle}
-                            title="Previous Sign"
+                            title={t('learning_page_by_categories.previous_sign')}
                             onPress={handlePreviousVideo}
                             disabled={currentVideoIndex === 0}
                         />
                         <Button
                             buttonStyle={styles.nextButtonStyle}
-                            title="Next Sign"
+                            title={t('learning_page_by_categories.next_sign')}
                             onPress={handleNextVideo}
                             disabled={currentVideoIndex >= tutorialsData.length - 1}
                         />
@@ -155,22 +158,30 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     label: {
+        marginTop: 10,
         backgroundColor: "#f7dc6f",
-        fontSize: hp(5),
+        fontSize: hp(2.5),
         borderRadius: theme.radius.md,
         marginBottom: 10,
-        width: wp(10),
-        height: wp(7),
+        width: wp(24),
+        height: wp(6),
         fontWeight: theme.fonts.semibold,
         textAlign: "center",
+        paddingVertical: hp(1.5)
     },
     image: {
         width: wp(15),
         height: wp(15),
     },
-    video: {
+    videoContainer: {
         width: '100%',
-        height: 250,
+        height: hp(35),
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    video: {
+        width: wp(35),
+        height: '100%',
         borderRadius: theme.radius.lg,
     },
     buttonContainer: {

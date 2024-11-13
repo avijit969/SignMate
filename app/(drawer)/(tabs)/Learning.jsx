@@ -9,7 +9,8 @@ import { Image } from 'expo-image';
 
 import { Pressable } from 'react-native';
 import { useRouter } from 'expo-router';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
+
 /**
  * Leaning component
  *
@@ -21,6 +22,7 @@ import { t } from 'i18next';
  */
 const Leaning = () => {
   const router = useRouter()
+  const { t } = useTranslation()
   return (
     <ScreenWrapper>
       <ScrollView>

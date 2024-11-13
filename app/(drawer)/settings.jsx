@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import RNPickerSelect from 'react-native-picker-select';
+import { Picker } from '@react-native-picker/picker';
 import { useTranslation } from 'react-i18next';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useDispatch, useSelector } from 'react-redux';
 import { decreaseFontSize, increaseFontSize, resetFontSize } from '../../features/font/fontSlice';
-
+import { toggleThemeMode } from '../../features/theme/themeSlice';
 const Settings = () => {
   const [selectedLanguage, setSelectedLanguage] = useState('en');
   const [selectedTheme, setSelectedTheme] = useState('Light');
@@ -13,25 +13,16 @@ const Settings = () => {
   const { i18n } = useTranslation();
   const dispatch = useDispatch();
   const fontSize = useSelector((state) => state.fontSize.font_size);
-
+  const themeMode = useSelector((state) => state.theme.mode)
   useEffect(() => {
     // Load the saved language, font size, and theme when the component mounts
     const loadSettings = async () => {
       try {
         const storedLanguage = await AsyncStorage.getItem('language');
-        const storedFontSize = await AsyncStorage.getItem('fontSize');
-        const storedTheme = await AsyncStorage.getItem('theme');
 
         if (storedLanguage) {
           setSelectedLanguage(storedLanguage);
           await i18n.changeLanguage(storedLanguage);
-        }
-        if (storedFontSize) {
-          setSelectedFontSize(parseInt(storedFontSize, 10));
-          dispatch(increaseFontSize(parseInt(storedFontSize, 10)));
-        }
-        if (storedTheme) {
-          setSelectedTheme(storedTheme);
         }
       } catch (error) {
         console.error('Error loading settings:', error);
@@ -51,46 +42,36 @@ const Settings = () => {
   };
 
   const handleThemeChange = (value) => {
-    setSelectedTheme(value);
-    AsyncStorage.setItem('theme', value); // Save selected theme
+    dispatch(toggleThemeMode(value))
   };
 
-  const handleFontSizeChange = (value) => {
-    setSelectedFontSize(value);
-    AsyncStorage.setItem('fontSize', value.toString()); // Save selected font size
-  };
 
   const resetFont = () => {
     dispatch(resetFontSize());
     setSelectedFontSize(16);
-    AsyncStorage.setItem('fontSize', '16'); // Reset font size in AsyncStorage
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: selectedTheme === 'Dark' ? 'black' : 'white' }]}>
+    <View style={[themeMode === 'light' ? styles.lightContainer : styles.darkContainer]}>
       <Text style={[styles.label, { fontSize: fontSize }]}>Select your language:</Text>
-      <RNPickerSelect
+      <Picker
+        selectedValue={selectedLanguage}
         onValueChange={handleLanguageChange}
-        items={[
-          { label: 'English', value: 'en' },
-          { label: 'Hindi', value: 'hi' },
-          { label: 'Gujarati', value: 'gu' },
-          { label: 'Odia', value: 'od' },
-        ]}
-        value={selectedLanguage}
-        style={pickerSelectStyles}
-      />
+      >
+        <Picker.Item label="English" value="en" />
+        <Picker.Item label="हिंदी" value="hi" />
+        <Picker.Item label='Odia' value="od" />
+        <Picker.Item label="Gujurati" value="gu" />
+      </Picker>
 
       <Text style={[styles.label, { fontSize: fontSize }]}>Select your theme:</Text>
-      <RNPickerSelect
+      <Picker
+        selectedValue={selectedTheme}
         onValueChange={handleThemeChange}
-        items={[
-          { label: 'Light', value: 'Light' },
-          { label: 'Dark', value: 'Dark' },
-        ]}
-        value={selectedTheme}
-        style={pickerSelectStyles}
-      />
+      >
+        <Picker.Item label="Light" value="Light" />
+        <Picker.Item label="Dark" value="Dark" />
+      </Picker>
 
       <Text style={[styles.label, { fontSize: fontSize }]}>Adjust font size:</Text>
       <View style={styles.fontSizeContainer}>
@@ -110,14 +91,22 @@ const Settings = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
+  lightContainer: {
     flex: 1,
     padding: 16,
     justifyContent: 'center',
   },
+  darkContainer: {
+    flex: 1,
+    padding: 16,
+    justifyContent: 'center',
+    backgroundColor: 'black',
+    color: '#FFFFFF',
+  },
   label: {
     marginVertical: 8,
     fontWeight: 'bold',
+
   },
   fontSizeContainer: {
     flexDirection: 'row',

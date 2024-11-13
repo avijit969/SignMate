@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import { wp } from '../../helpers/common';
 import { theme } from '../../constants/theme';
+import { useTranslation } from 'react-i18next';
 
 /**
  * The FAQs component displays frequently asked questions with a toggle to show or hide answers.
@@ -9,6 +10,7 @@ import { theme } from '../../constants/theme';
  */
 const FAQs = () => {
   const [visibleIndex, setVisibleIndex] = useState(null);
+  const { t } = useTranslation();
 
   const faqs = [
     {
@@ -53,7 +55,7 @@ const FAQs = () => {
     <View style={styles.container}>
       {/* Display the FAQs with your own design */}
       <View style={styles.questions}>
-        {faqs.map((faq, index) => (
+        {t('faqs_page.questions', { returnObjects: true }).map((faq, index) => (
           <View key={index} style={styles.faqContainer}>
             <View style={styles.questionContainer}>
               <Text style={styles.question}>{index + 1}. {faq.question}</Text>

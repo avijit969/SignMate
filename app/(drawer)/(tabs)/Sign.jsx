@@ -6,12 +6,13 @@ import * as mime from 'react-native-mime-types';
 import ScreenWrapper from '@/components/ScreenWrapper';
 import { theme } from '@/constants/theme';
 import { wp } from "@/helpers/common";
+import { useTranslation } from 'react-i18next';
 
 export default function Sign() {
   const [videoUri, setVideoUri] = useState("");
   const [predict, setPredict] = useState("");
   const [loading, setLoading] = useState(false);
-
+  const { t } = useTranslation();
   const pickVideo = async () => {
     const permissionResult = await ImagePicker.requestCameraPermissionsAsync();
     if (!permissionResult.granted) {
@@ -71,14 +72,15 @@ export default function Sign() {
   return (
     <ScreenWrapper bg="">
       <View style={styles.container}>
+        <Text style={styles.title}>{t('sign_page.heading')}</Text>
         <TouchableOpacity style={styles.button} onPress={pickVideo} disabled={loading}>
-          <Text style={styles.text}>Record Video</Text>
+          <Text style={styles.text}>{t('sign_page.record_your_sign')}</Text>
         </TouchableOpacity>
         {loading ? (
-          <ActivityIndicator size="large" color={theme.colors.primary} />
+          <ActivityIndicator size="large" color={theme.colors.primary} style={{ marginTop: 20 }} />
         ) : (
           <>
-            <Text style={styles.signText}>Sign For the Uploaded video is 👇</Text>
+            {predict && <Text style={styles.signText}>{t('sign_page.title')}</Text>}
             {predict && (
               <View>
                 <View style={styles.labelBackground}>
@@ -95,14 +97,28 @@ export default function Sign() {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: '#e7eee6',
+    // paddingVertical: 40,
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: theme.colors.dark,
+    marginTop: 20,
+    marginBottom: 20,
+    alignContent: 'center',
+    paddingHorizontal: 15,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 15,
   },
   button: {
     backgroundColor: '#6200ee',
     padding: 10,
-    borderRadius: 5,
+    borderRadius: theme.radius.sm,
+    marginTop: 50,
   },
   text: {
     fontSize: 18,

@@ -6,7 +6,6 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 // import useControls from 'r3f-native-orbitcontrols';
 import { hp, wp } from '../../../helpers/common';
 import ScreenWrapper from '../../../components/ScreenWrapper';
-import Button from '../../../components/Button';
 import { supabase } from '../../../lib/supabase';
 import CustomAlert from '../../../components/Alert';
 import { Video } from 'expo-av';
@@ -14,7 +13,7 @@ import { StatusBar } from 'expo-status-bar';
 import { theme } from '../../../constants/theme';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { decreaseFontSize, increaseFontSize } from '../../../features/font/fontSlice';
+
 
 /**
  * Home Screen
@@ -41,16 +40,9 @@ export default function Home() {
   const [alertVisible, setAlertVisible] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
   const userData = useSelector((state) => state.auth.userData)
-  const { t, i18n } = useTranslation();
-  const dispatch = useDispatch();
+  const { t } = useTranslation();
   const fontSize = useSelector((state) => state.fontSize.font_size);
   const isDefault = useSelector((state) => state.fontSize.isDefault);
-  const handleLogout = async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-      return <CustomAlert message={error.message} visible={true} />;
-    }
-  };
 
   const fetchVideoData = async () => {
     const { data, error } = await supabase

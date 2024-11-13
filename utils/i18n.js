@@ -11,7 +11,7 @@ import 'intl-pluralrules';
 const getDefaultLanguage = async () => {
     try {
         const savedLanguage = await AsyncStorage.getItem('language');
-        return savedLanguage || 'en'; // Default to 'en' if no language is saved
+        return savedLanguage || 'en';
     } catch (error) {
         console.error('Error loading language from storage:', error);
         return 'en'; // Fallback to default language
@@ -30,14 +30,14 @@ const initI18n = async () => {
                 gu: { translation: gu },
                 hi: { translation: hi }
             },
-            lng: defaultLanguage, // Set the default language
-            fallbackLng: 'en', // Default language if the selected one is not available
+            lng: defaultLanguage,
+            fallbackLng: 'en',
             interpolation: {
-                escapeValue: false, // React already escapes by default
+                escapeValue: false,
             },
         });
 };
 
-initI18n(); // Initialize i18n
+initI18n();
 
 export default i18n;
